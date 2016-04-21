@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.easycms.entity.CmsNew">
+    <!-- 插入操作 -->
+	<insert id="add" parameterType="news">
+	  <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+	      SELECT LAST_INSERT_ID()
+	  </selectKey>
+	  insert into ec_new(title,content) values(#{title},#{content})
+	</insert>
+	<!-- 删除操作 -->
+	<delete id="delete" parameterType="int">
+	  delete from ec_new where id=#{id}
+	</delete>
+	<!-- 批量删除 -->
+	<delete id="deleteIn" parameterType="java.util.List">
+	  delete from ec_new where id in
+	  <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+	      ${item}
+	  </foreach>
+	</delete>
+	<!-- 修改操作 -->
+	<update id="update" parameterType="news">
+	  update ec_new set title=#{title},content=#{content} where id=#{id}
+	</update>
+	<!--  查询操作-->
+	<select id="findById" resultMap="newsMap" parameterType="int">
+	  select 
+	  u.id,u.title, u.content
+	  from 
+	  	ec_new u
+	  where 
+	  	u.id=#{id} 
+	</select>
+	<resultMap type="news" id="newsMap">
+	    <id property="id" column="id"/>
+	    <result property="title" column="title"/>
+	    <result property="content" column="content"/>
+	</resultMap>
+	<!-- 查询全部 -->
+	<select id="findAll" resultMap="newsMap">
+	  select 
+	  u.id,	u.title, u.content
+	  from 
+	  	ec_new u
+	</select>
+	<!-- 分页查询 -->
+	<select id="findByPage" resultMap="newsMap" parameterType="map">
+	  select 
+	 u.id, u.title, u.content
+	  from 
+	  	ec_new u
+	  order by 
+	  	id desc
+	  limit 
+	    #{showPages},#{pageSize} 
+	</select>
+	<!-- 总页数 -->
+	<select id="findTotal" resultType="int" parameterType="int">
+	  select count(*) from ec_new
+	</select>
+    <!-- 根据用户名获得对象 -->
+	<select id="findByName" resultType="news" parameterType="news">
+	  select * from ec_new where title=#{title}
+	</select>
+</mapper>    
