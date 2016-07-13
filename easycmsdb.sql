@@ -206,26 +206,28 @@ CREATE TABLE `ec_message_receiver` (
 -- ----------------------------
 DROP TABLE IF EXISTS `ec_new`;
 CREATE TABLE `ec_new` (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) DEFAULT NULL,
-  `content` text,
-  PRIMARY KEY (`id`)
+`id` int(255) NOT NULL AUTO_INCREMENT,
+`title` varchar(255) DEFAULT NULL,
+`content` text,
+`dateofnews` date DEFAULT NULL,
+PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+
 
 -- ----------------------------
 -- Records of ec_new
 -- ----------------------------
-INSERT INTO `ec_new` VALUES ('1', '测试', '试试');
-INSERT INTO `ec_new` VALUES ('17', 'adse', 'dagsgg');
-INSERT INTO `ec_new` VALUES ('18', '的设备及方法', '额');
-INSERT INTO `ec_new` VALUES ('19', '1', '1');
-INSERT INTO `ec_new` VALUES ('20', '2', '2');
-INSERT INTO `ec_new` VALUES ('21', '3', '');
-INSERT INTO `ec_new` VALUES ('22', '4', '');
-INSERT INTO `ec_new` VALUES ('23', '5', '');
-INSERT INTO `ec_new` VALUES ('24', '6', '');
-INSERT INTO `ec_new` VALUES ('25', '46', '');
-INSERT INTO `ec_new` VALUES ('26', '3', '');
+INSERT INTO `ec_new` VALUES ('1', '测试', '试试','2016-06-20');
+INSERT INTO `ec_new` VALUES ('17', 'adse', 'dagsgg','2016-06-19');
+INSERT INTO `ec_new` VALUES ('18', '的设备及方法', '额','2016-06-19');
+INSERT INTO `ec_new` VALUES ('19', '1', '1','2016-06-17');
+INSERT INTO `ec_new` VALUES ('20', '2', '2','2016-06-16');
+INSERT INTO `ec_new` VALUES ('21', '3', 'adfasdfasdfa','2016-06-15');
+INSERT INTO `ec_new` VALUES ('22', '4', '阿萨德发射点发','2016-06-12');
+INSERT INTO `ec_new` VALUES ('23', '5', '搞活艰苦搞活棵桂花','2016-06-10');
+INSERT INTO `ec_new` VALUES ('24', '6', '','2016-06-1');
+INSERT INTO `ec_new` VALUES ('25', '46', '','2016-05-9');
+INSERT INTO `ec_new` VALUES ('26', '3', '','2016-05-1');
 
 -- ----------------------------
 -- Table structure for ec_role
